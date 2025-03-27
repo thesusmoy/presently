@@ -14,9 +14,9 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 const corsOptions = {
-    origin: 'https://presently-os.vercel.app',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    transports: '*',
     credentials: true,
 };
 app.use(cors(corsOptions));
@@ -33,7 +33,6 @@ const server = http.createServer(app);
 // Set up Socket.io
 const io = new Server(server, {
     cors: corsOptions,
-    transports: ['websocket', 'polling'],
     path: '/socket.io/',
 });
 
