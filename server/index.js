@@ -11,6 +11,7 @@ const createConnectionToDataBase = require('./database/connectToMongoDB');
 dotenv.config();
 const app = express();
 app.use(express.json());
+
 const PORT = process.env.PORT || 5000;
 const corsOptions = {
     origin: 'https://presently-os.vercel.app',
@@ -22,7 +23,7 @@ app.use(cors(corsOptions));
 
 app.use('/api', mainRoute);
 
-app.get('/', function (req, res) {
+app.get('/', function (_req, res) {
     res.send('API is running...');
 });
 
@@ -32,6 +33,7 @@ const server = http.createServer(app);
 // Set up Socket.io
 const io = new Server(server, {
     cors: corsOptions,
+    transports: ['websocket', 'polling'],
     path: '/socket.io/',
 });
 
