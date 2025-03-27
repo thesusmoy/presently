@@ -1,0 +1,27 @@
+*{
+    @apply m-0 p-0 box-border duration-300 shadow-none
+}
+
+ul{
+    @apply list-none
+}
+
+*:hover{
+    @apply duration-300
+}
+
+button, input[type="text"]{
+    @apply rounded
+}
+
+input[type="text"]{
+    @apply mr-2 p-2 border-2 border-gray-500
+}
+
+button{
+    @apply bg-primary p-2 border-2 rounded-md border-primary text-white cursor-pointer hover:opacity-60
+}
+
+.alterBtn{
+    @apply bg-alter p-2 border-2 border-alter text-white cursor-pointer hover:opacity-60
+}
