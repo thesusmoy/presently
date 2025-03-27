@@ -49,7 +49,7 @@ const UsersInPresentation = ({ presentation, socket, handlegetPresentationByIdFo
                                     <span
                                         className={
                                             userItem === presentation.author
-                                                ? 'text-blue-500 font-bold'
+                                                ? 'text-blue-500 font-bold text-xs'
                                                 : presentation.blackListUsers.includes(userItem)
                                                 ? 'text-orange-700'
                                                 : 'text-green-500'

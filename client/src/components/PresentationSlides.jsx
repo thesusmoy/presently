@@ -5,7 +5,7 @@ import {
     setSelectedSlide,
 } from '../store/features/PresentationSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PresentationSlides = ({ presentation, selectedSlide, socket, handlegetPresentationByIdForSocket }) => {
     const user = useSelector((state) => state.user.name);
@@ -54,11 +54,15 @@ const PresentationSlides = ({ presentation, selectedSlide, socket, handlegetPres
 
     return (
         <>
-            {presentation?.author === user && (
+            <button onClick={() => navigate('/')} className="bg-primary text-white block mb-4">
+                Go Back
+            </button>
+            {/* {presentation?.author === user && (
                 <button onClick={handleDeletePresentaion} className="alterBtn block mb-4">
                     Delete Presentation
                 </button>
-            )}
+                
+            )} */}
             <h2 className="text-lg font-bold mb-4">All Slides</h2>
             {presentation.slides.map((slide, id) => {
                 return (

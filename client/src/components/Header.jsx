@@ -10,7 +10,8 @@ const Header = () => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const newSocket = io(import.meta.env.VITE_SERVER_SOCKET_URL); // Replace with your server URL
+        const newSocket = io(import.meta.env.VITE_SERVER_SOCKET_URL);
+
         setSocket(newSocket);
         if (socket) {
             return () => {
