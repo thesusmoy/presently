@@ -32,8 +32,10 @@ const Header = () => {
                         Presently
                     </Link>
                     <div className="flex items-center">
-                        <span className="text-2xl mr-6">Welcome, {user}</span>
-                        <button onClick={handleLogOut} className="alterBtn">
+                        <i className="text-xl mr-6">
+                            Welcome, <b>{user}</b>
+                        </i>
+                        <button onClick={handleLogOut} className="alterBtn ">
                             Log out
                         </button>
                     </div>
