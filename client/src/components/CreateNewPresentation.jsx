@@ -86,7 +86,7 @@ const CreateNewPresentation = () => {
                                 <button
                                     onClick={handleCreateNewPresentation}
                                     type="submit"
-                                    className="bg-cyan-600 text-white p-2 rounded-lg"
+                                    className="bg-cyan-600 text-white p-2 rounded-lg border-none"
                                 >
                                     Create
                                 </button>
