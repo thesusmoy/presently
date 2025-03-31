@@ -72,7 +72,7 @@ const PresentationPage = () => {
 
             <div className="w-1/5 p-2">
                 <div>
-                    <button className="mb-4" onClick={handleDownloadPresentation}>
+                    <button className="mb-4 px-3 py-1" onClick={handleDownloadPresentation}>
                         Download PDF
                     </button>
                 </div>

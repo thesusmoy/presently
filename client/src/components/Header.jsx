@@ -26,7 +26,7 @@ const Header = () => {
 
     return (
         <div>
-            <header className="bg-cyan-600 mb-8">
+            <header className="bg-cyan-600 mb-2">
                 <div className="container mx-auto text-white py-4 flex justify-between items-center">
                     <Link className="text-2xl" to="/">
                         Presently
@@ -35,7 +35,7 @@ const Header = () => {
                         <i className="text-xl mr-6">
                             Welcome, <b>{user}</b>
                         </i>
-                        <button onClick={handleLogOut} className="alterBtn ">
+                        <button onClick={handleLogOut} className="alterBtn px-3 py-1">
                             Log out
                         </button>
                     </div>

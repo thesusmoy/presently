@@ -54,15 +54,9 @@ const PresentationSlides = ({ presentation, selectedSlide, socket, handlegetPres
 
     return (
         <>
-            <button onClick={() => navigate('/')} className="bg-primary text-white block mb-4">
+            <button onClick={() => navigate('/')} className="bg-primary px-3 py-1 text-white block mb-4">
                 Go Back
             </button>
-            {/* {presentation?.author === user && (
-                <button onClick={handleDeletePresentaion} className="alterBtn block mb-4">
-                    Delete Presentation
-                </button>
-                
-            )} */}
             <h2 className="text-lg font-bold mb-4">All Slides</h2>
             {presentation.slides.map((slide, id) => {
                 return (
@@ -80,22 +74,22 @@ const PresentationSlides = ({ presentation, selectedSlide, socket, handlegetPres
                         >
                             Slide {id + 1}
                         </button>
-                        {user === presentation.author && (
+                        {user === presentation.author || !presentation.blackListUsers.includes(user) ? (
                             <button
                                 onClick={() => handleDeleteSlide(id)}
                                 className="bg-rose-400 border-none text-black"
                             >
                                 Delete
                             </button>
-                        )}
+                        ) : null}
                     </div>
                 );
             })}
-            {user === presentation.author && (
-                <button onClick={handleAddSlide} className="bg-cyan-600 border-none">
+            {user === presentation.author || !presentation.blackListUsers.includes(user) ? (
+                <button onClick={handleAddSlide} className="bg-cyan-600 px-3 py-1 border-none">
                     Add Slide
                 </button>
-            )}
+            ) : null}
         </>
     );
 };

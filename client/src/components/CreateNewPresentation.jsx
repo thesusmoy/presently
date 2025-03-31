@@ -47,12 +47,12 @@ const CreateNewPresentation = () => {
 
     return (
         <>
-            <button onClick={handleOpenEditMode} className="bg-cyan-600 border-none text-white p-3 rounded-lg">
-                Create New Presentation
+            <button onClick={handleOpenEditMode} className="bg-cyan-600 mt-6 border-none text-white p-3 rounded-lg">
+                Create New
             </button>
 
             {editMode && (
-                <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                <div className="fixed z-10 inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-8 rounded-lg shadow-lg w-96 ">
                         <h2 className="text-xl font-bold mb-4 border-none">Create New Presentation</h2>
                         <div>

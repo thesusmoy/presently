@@ -19,7 +19,7 @@ const HomePage = () => {
         <div>
             <div className="mb-6">
                 <div className="flex justify-between">
-                    <h2 className="text-xl font-bold">Available Presentations</h2>
+                    <h2 className="text-xl mt-6 font-bold">Available Presentations</h2>
                     <CreateNewPresentation />
                 </div>
             </div>

@@ -16,7 +16,7 @@ const SlideEditor = ({ presentation, selectedSlide, socket, handlegetPresentatio
 
     useEffect(() => {
         if (socket) {
-            socket.on('refreshPresentation', () => handlegetPresentationByIdForSocket(presentation?._id));
+            socket.on('refreshPresentation', () => handlegetPresentationByIdForSocket(presentation._id));
 
             return () => {
                 socket.off('refreshPresentation');
@@ -28,16 +28,17 @@ const SlideEditor = ({ presentation, selectedSlide, socket, handlegetPresentatio
         setEditMode(true);
     };
 
-    const handleSaveChanges = async () => {
-        dispatch(editPresentationSlide(slideContent));
-        setEditMode(false);
-        await socket.emit('editPresentation', presentation._id, selectedSlide, slideContent);
-        handlegetPresentationByIdForSocket();
-    };
-
     const handleCancel = () => {
         setEditMode(false);
     };
+
+    useEffect(() => {
+        if (slideContent !== null) {
+            dispatch(editPresentationSlide(slideContent)); // Update Redux store
+            socket.emit('editPresentation', presentation._id, selectedSlide, slideContent); // Emit update via WebSocket
+            // handlegetPresentationByIdForSocket(); // Refresh data
+        }
+    }, [slideContent]);
 
     return (
         <div>
@@ -51,7 +52,6 @@ const SlideEditor = ({ presentation, selectedSlide, socket, handlegetPresentatio
                             <button className="bg-alter border-alter mr-4" onClick={handleCancel}>
                                 Cancel
                             </button>
-                            <button onClick={handleSaveChanges}>Save changes</button>
                         </div>
                     )
                 ) : null}
@@ -67,18 +67,13 @@ const SlideEditor = ({ presentation, selectedSlide, socket, handlegetPresentatio
 
             {presentation?.slides.length ? (
                 <>
-                    {editMode && allowedEdit ? (
+                    <SlidePreview slideData={presentation?.slides[selectedSlide]} />
+                    {editMode && allowedEdit && (
                         <EditorBlock
                             presentation={presentation}
                             selectedSlide={selectedSlide}
                             setSlideContent={setSlideContent}
                         />
-                    ) : (
-                        presentation?.slides[selectedSlide] && (
-                            <div className="h-[500px]">
-                                <SlidePreview slideData={presentation?.slides[selectedSlide]} />
-                            </div>
-                        )
                     )}
                 </>
             ) : null}

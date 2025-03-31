@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Excalidraw } from '@excalidraw/excalidraw';
 import debounce from 'lodash.debounce';
 
@@ -17,12 +17,19 @@ const EditorBlock = ({ presentation, selectedSlide, slideContent, setSlideConten
     };
 
     return (
-        <div className="h-[500px] border-2">
+        <div className="h-[240px] border-2 ">
             {presentation?.slides.length && selectedSlide !== undefined ? (
                 <Excalidraw onChange={handleChange} initialData={{ elements: presentation?.slides[selectedSlide] }} />
             ) : (
                 <p>Loading slide...</p>
             )}
+            {/* <Excalidraw
+                onChange={handleChange}
+                initialData={{
+                    elements: slideContent,
+                    appState: { viewBackgroundColor: '#D3D3D3' },
+                }}
+            /> */}
         </div>
     );
 };
